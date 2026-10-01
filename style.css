@@ -32,3 +32,4 @@ html,body{height:100%;overflow:hidden}main{height:100dvh;min-height:0;grid-templ
 #viewport:not(.compact) .chip button{display:inline-block;font-size:12px;padding:0 2px}
 /* Tooltip completo para toda a área do card. */
 #area-tooltip{width:300px;max-width:calc(100vw - 24px);line-height:1.5}.tooltip-title{overflow-wrap:anywhere}.tooltip-section{border-top:1px solid #e8edf4;padding-top:12px;margin:12px 0 10px;font-size:11px;font-weight:700;color:#63718a}.tooltip-participant{display:flex;align-items:flex-start;gap:8px;margin:8px 0}.tooltip-dot{width:9px;height:9px;margin-top:5px;border-radius:50%;flex-shrink:0}.tooltip-person{min-width:0}#area-tooltip .tooltip-person strong{font-size:12px;overflow-wrap:anywhere;margin:0}.tooltip-person p,.tooltip-empty{margin:3px 0 0;font-size:12px;color:#718098;overflow-wrap:anywhere}
+#files-menu .menu-divider{width:calc(100% - 20px);margin:6px 10px;border:0;border-top:1px solid #e3e9f1}
