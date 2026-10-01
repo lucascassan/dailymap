@@ -184,6 +184,7 @@ $('files-toggle').onclick=()=>fileMenu($('files-menu').hidden);
 $('import-json').onclick=()=>{fileMenu(false);$('restore').click()};
 document.addEventListener('click',event=>{if(!event.target.closest('.file-actions'))fileMenu(false)});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('files-menu').hidden){fileMenu(false);$('files-toggle').focus()}});
+$('export-results').onclick=async()=>{fileMenu(false);const button=$('export-results');button.disabled=true;button.textContent='Gerando PDF…';try{await window.DailyResults.download(state);toast('Resultados exportados em PDF.')}catch(error){console.error('Falha ao exportar resultados:',error);toast('Não foi possível gerar o PDF. Tente novamente.')}finally{button.disabled=false;button.textContent='Exportar Resultados'}};
 $('backup').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(exportMap(),null,2)],{type:'application/json'}));a.download='mapa-daily.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);fileMenu(false)};
 $('restore').onchange=async event=>{const file=event.target.files[0];if(!file)return;try{
  if(file.size>5000000)throw Error('O JSON deve ter até 5 MB.');
