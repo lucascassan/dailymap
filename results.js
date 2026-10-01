@@ -181,9 +181,10 @@ window.DailyResults = (() => {
     const report = snapshot(state);
     const bytes = await createPdf(report);
     const filename = report.project.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase() || 'projeto';
+    const date = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'America/Sao_Paulo' }).format(new Date(report.generatedAt)).replaceAll('/', '-');
     const url = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' }));
     const anchor = document.createElement('a');
-    anchor.href = url; anchor.download = `resultados-${filename}.pdf`;
+    anchor.href = url; anchor.download = `daily_${filename}_${date}.pdf`;
     document.body.append(anchor); anchor.click(); anchor.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
